@@ -9,3 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/create-admin', [AdminController::class,'createAdmin']);
+Route::post('/login-admin', [AdminController::class,'loginAdmin']);

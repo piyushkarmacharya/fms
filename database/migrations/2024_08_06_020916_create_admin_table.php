@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->String("name");
             $table->String("contact_number");
-            $table->String("email");
+            $table->String("email")->unique();
             $table->String("password");
            
         });
+        
     }
 
     /**
