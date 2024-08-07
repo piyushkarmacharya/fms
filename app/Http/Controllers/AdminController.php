@@ -37,9 +37,12 @@ class AdminController extends Controller
             if($login){
                 $admin->update(["password"=>$req->newPassword]);
                 return response()->json(['changed_password'=>true]);
+            }else{
+                return response()->json(['changed_password'=>false,'message'=>"Old password didn't match"]);
             }
-            return response()->json(['changed_password'=>false]);
+        }else{
+            return response()->json(['changed_password'=>false,'message'=>"User not found"]);
+
         }
-        return response()->json(['changed_password'=>false]);
     }
 }
