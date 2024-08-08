@@ -29,6 +29,7 @@ class AdminController extends Controller
         $login=Auth::guard("admin")->attempt(['email'=>$req->email,'password'=>$req->password]);
         return response()->json(['login'=>$login]);
     }
+    
     public function changePasswordAdmin(Request $req){
         $admin=Admin::where('id',$req->id)->first();
         if($admin){
