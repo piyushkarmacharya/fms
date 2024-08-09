@@ -36,8 +36,13 @@ class AdminController extends Controller
             $email=$admin->email;
             $login=Auth::guard("admin")->attempt(['email'=>$email,'password'=>$req->oldPassword]);
             if($login){
-                $admin->update(["password"=>$req->newPassword]);
-                return response()->json(['changed_password'=>true]);
+                if($req->oldPassword!=$req->newPassword){
+                    $admin->update(["password"=>$req->newPassword]);
+                    return response()->json(['changed_password'=>true]);
+                }else{
+                    return response()->json(['changed_password'=>false,'message'=>"Old password and new password are same"]);
+                }
+               
             }else{
                 return response()->json(['changed_password'=>false,'message'=>"Old password didn't match"]);
             }

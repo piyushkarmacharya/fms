@@ -15,3 +15,5 @@ Route::post('/change-password-admin', [AdminController::class,'changePasswordAdm
 
 Route::post('/create-member', [MemberController::class,'createMember']);
 Route::post('/login-member', [MemberController::class,'loginMember']);
+Route::get('/read-member', [MemberController::class,'readMember']);
+Route::post('/change-password-member', [MemberController::class,'changePasswordMember']);
