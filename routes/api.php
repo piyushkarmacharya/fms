@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MemberController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -11,3 +12,6 @@ Route::get('/user', function (Request $request) {
 Route::post('/create-admin', [AdminController::class,'createAdmin']);
 Route::post('/login-admin', [AdminController::class,'loginAdmin']);
 Route::post('/change-password-admin', [AdminController::class,'changePasswordAdmin']);
+
+Route::post('/create-member', [MemberController::class,'createMember']);
+Route::post('/login-member', [MemberController::class,'loginMember']);
