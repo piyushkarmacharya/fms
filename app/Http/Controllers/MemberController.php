@@ -19,7 +19,7 @@ class MemberController extends Controller
             ]);
             return response()->json(['member_created' => true,"id"=>$mem->id]);
         }catch(\Exception $e){
-            return response()->json(['member_created'=>false,'exception'=>$e->getMessage()],500);
+            return response()->json(['member_created'=>false,'message'=>$e->getMessage()],500);
         }
     }
     public function readMember(Request $req){

@@ -19,7 +19,7 @@ class AdminController extends Controller
         ]);
         return response()->json(['admin_created' => true,"id"=>$admin->id]);
        }catch(\Exception $e){
-        return response()->json(['admin_created' => false, 'exception' => $e->getMessage()], 500);
+        return response()->json(['admin_created' => false, 'message' => $e->getMessage()], 500);
        }
        
 
