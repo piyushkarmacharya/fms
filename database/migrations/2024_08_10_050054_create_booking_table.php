@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign("member_id")->references("id")->on("member")->onDelete('cascade');
             $table->date("date");
             $table->time("time");
+            $table->unsignedBigInteger("rate");
             $table->unsignedBigInteger("payment_amount");
             $table->boolean("payment_cleared")->default(false);
             $table->boolean("approved")->default(false);

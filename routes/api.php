@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\MemberController;
 
 Route::get('/user', function (Request $request) {
@@ -17,3 +18,5 @@ Route::post('/create-member', [MemberController::class,'createMember']);
 Route::post('/login-member', [MemberController::class,'loginMember']);
 Route::get('/read-member', [MemberController::class,'readMember']);
 Route::post('/change-password-member', [MemberController::class,'changePasswordMember']);
+
+Route::post("/create-booking",[BookingController::class,'createBooking']);
