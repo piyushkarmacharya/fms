@@ -27,4 +27,25 @@ class BookingController extends Controller
         }
         
     }
+    public function readBooking(){
+        $bookings=Booking::all();
+        return response()->json($bookings);
+    }
+    public function approveBooking(Request $req){
+        $booking=Booking::find($req->id);
+        if($booking){
+            $booking->update([
+                'approved'=>true
+            ]);
+            return response()->json([
+                'approved'=>true,
+                'approved_booking'=>$booking->get(),
+            ]);
+        }else{
+            return response()->json([
+                'approved'=>false,
+                'message'=>'no such bookings',
+            ]);
+        }
+    }
 }

@@ -19,4 +19,7 @@ Route::post('/login-member', [MemberController::class,'loginMember']);
 Route::get('/read-member', [MemberController::class,'readMember']);
 Route::post('/change-password-member', [MemberController::class,'changePasswordMember']);
 
+
 Route::post("/create-booking",[BookingController::class,'createBooking']);
+Route::get("/read-booking",[BookingController::class,'readBooking']);
+Route::post("/approve-booking",[BookingController::class,'approveBooking']);
