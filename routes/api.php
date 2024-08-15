@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\RateController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -23,3 +24,5 @@ Route::post('/change-password-member', [MemberController::class,'changePasswordM
 Route::post("/create-booking",[BookingController::class,'createBooking']);
 Route::get("/read-booking",[BookingController::class,'readBooking']);
 Route::post("/approve-booking",[BookingController::class,'approveBooking']);
+
+Route::post("/create-rate",[RateController::class,'createRate']);
