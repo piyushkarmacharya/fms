@@ -26,3 +26,4 @@ Route::get("/read-booking",[BookingController::class,'readBooking']);
 Route::post("/approve-booking",[BookingController::class,'approveBooking']);
 
 Route::post("/create-rate",[RateController::class,'createRate']);
+Route::get("/get-rate",[RateController::class,'getRate']);

@@ -22,4 +22,9 @@ class RateController extends Controller
        }
         
     }
+    public function getRate(){
+        $rate=Rate::orderBy('id','DESC')->first();
+        
+        return response()->json($rate);
+    }
 }
