@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use App\Models\Rate;
 
 class BookingController extends Controller
 {
@@ -12,7 +13,8 @@ class BookingController extends Controller
             return response()->json(['booked'=>false,'message'=>'Another team has already booked at that time']);
         }else{
             $amount=$req->payment_amount;
-            $rate=$req->rate;
+        
+            $rate=Rate::latest()->value('rate');
             $booking=Booking::create([
                 "member_id"=>$req->member_id,
                 "date"=>$req->date,
