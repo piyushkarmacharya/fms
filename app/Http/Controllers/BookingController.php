@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Models\Rate;
@@ -30,8 +31,10 @@ class BookingController extends Controller
         
     }
     public function readBooking(){
+        $data=DB::table('booking')->join("member","booking.member_id","=","member.id")->select("booking.*","member.name","member.contact_number","member.email")->get();
+
         $bookings=Booking::all();
-        return response()->json($bookings);
+        return response()->json($data);
     }
     public function approveBooking(Request $req){
         $booking=Booking::find($req->id);
