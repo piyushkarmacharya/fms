@@ -37,7 +37,7 @@ class BookingController extends Controller
         $booking=Booking::find($req->id);
         if($booking){
             $booking->update([
-                'approved'=>true
+                'status'=>"approved"
             ]);
             return response()->json([
                 'approved'=>true,

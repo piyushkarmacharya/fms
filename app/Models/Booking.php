@@ -11,5 +11,5 @@ class Booking extends Model
     public $timestamps = false;
     protected $table="booking";
     protected $primaryKey="id";
-    protected $fillable=['member_id','date','time','rate','payment_amount','payment_cleared',"approved"];
+    protected $fillable=['member_id','date','time','rate','payment_amount','payment_cleared',"status"];
 }

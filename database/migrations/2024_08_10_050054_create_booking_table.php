@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger("rate");
             $table->unsignedBigInteger("payment_amount");
             $table->boolean("payment_cleared")->default(false);
-            $table->boolean("approved")->default(false);
+            $table->string("status")->default("pending");
         });
     }
 
