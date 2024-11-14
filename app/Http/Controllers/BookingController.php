@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Models\Rate;
+use Carbon\Carbon;
+
+
+
 
 class BookingController extends Controller
 {
@@ -30,11 +34,19 @@ class BookingController extends Controller
         }
         
     }
-    public function readBooking(){
-        $data=DB::table('booking')->join("member","booking.member_id","=","member.id")->select("booking.*","member.name","member.contact_number","member.email")->get();
+    public function readBooking(Request $req){
 
-        $bookings=Booking::all();
-        return response()->json($data);
+        
+        if($date=$req->input("date")){
+           
+            $apiDate = Carbon::parse($date);
+            $data=DB::table('booking')->join("member","booking.member_id","=","member.id")->select("booking.*","member.name","member.contact_number","member.email")->where("booking.date",$apiDate)->get();
+            return response()->json($data);
+        }else{
+            $data=DB::table('booking')->join("member","booking.member_id","=","member.id")->select("booking.*","member.name","member.contact_number","member.email")->get();
+return response()->json($data);
+        }
+        
     }
     public function approveBooking(Request $req){
         $booking=Booking::find($req->id);
