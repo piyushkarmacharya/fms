@@ -56,11 +56,28 @@ return response()->json($data);
             ]);
             return response()->json([
                 'approved'=>true,
-                'approved_booking'=>$booking->get(),
+                'approved_booking'=>$booking,
             ]);
         }else{
             return response()->json([
                 'approved'=>false,
+                'message'=>'no such bookings',
+            ]);
+        }
+    }
+    public function rejectBooking(Request $req){
+        $booking=Booking::find($req->id);
+        if($booking){
+            $booking->update([
+                'status'=>"rejected"
+            ]);
+            return response()->json([
+                'rejected'=>true,
+                'approved_booking'=>$booking,
+            ]);
+        }else{
+            return response()->json([
+                'rejected'=>false,
                 'message'=>'no such bookings',
             ]);
         }
